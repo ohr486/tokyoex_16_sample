@@ -4,7 +4,10 @@ defmodule PlugSample.ModulePlug do
 
   require Logger
 
-  def init(opts), do: opts
+  def init(opts) do
+    Logger.info "module_plug#init called @ compile time"
+    opts
+  end
 
   def call(conn, _opts) do
     Logger.info "module_plug called! @ [ModulePlug][PlugSample.ModulePlug]"
