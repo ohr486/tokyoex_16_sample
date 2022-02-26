@@ -19,12 +19,16 @@ defmodule PlugSample.Router do
     send_resp(conn, 200, "GET /foo")
   end
 
+  get "/hello/:name" do
+    send_resp(conn, 200, "hello #{name}")
+  end
+
   match _ do
     send_resp(conn, 404, "Not Found!")
   end
 
   # Function Plug
-  def func_plug(conn, _opts) do
+  defp func_plug(conn, _opts) do
     Logger.info "func_plug called! @ [FunctionPlug][PlugSample.Rotuer]"
     # do something!
     conn
